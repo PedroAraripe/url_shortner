@@ -1,10 +1,19 @@
 version: '3'
 
 services:
-  node_service:
-    image: url_shortnet:v1.0
-    build: .
+  frontend:
+    image: url_shortnet_frontend:v1.0
+    build: ./frontend
+    ports:
+      - "8080:8080"
+  #   volumes:
+  #     - .:/usr/src/frontend/
+  backend:
+    image: url_shortnet_backend:v1.0
+    environment:
+      PORT: 3000
+    build: ./backend
     ports:
       - "3000:3000"
-    volumes:
-      - .:/usr/src/app
+    # volumes:
+    #   - .:/usr/src/backend/
