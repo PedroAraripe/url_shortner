@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  node_service:
+    image: url_shortnet:v1.0
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
