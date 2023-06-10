@@ -7,17 +7,12 @@ WORKDIR /usr/src/app
 # where available (npm@5+)
 COPY package*.json ./
 
-# Install dependencies on linux for wpp-web qr code be asked on terminal after start
-# RUN apt-get update -y
-# RUN npm install pm2@latest -g
-
-# Install app dependencies
-# If you are building your code for production
-# RUN npm ci --omit=dev
-
-# Bundle app source
 COPY . .
 
+RUN npm install
+RUN npm run build
+# If you are building your code for production
+# RUN npm ci --omit=dev
 EXPOSE 3000
-# CMD npm i && node server.js
+CMD node dist/index.js
 # CMD npm i && pm2 start server.js
