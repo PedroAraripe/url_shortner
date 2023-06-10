@@ -2,18 +2,24 @@ version: '3'
 
 services:
   frontend:
-    image: url_shortnet_frontend:v1.0
+    image: urls_frontend:v1.0
     build: ./frontend
     ports:
       - "8080:8080"
   #   volumes:
   #     - .:/usr/src/frontend/
   backend:
-    image: url_shortnet_backend:v1.0
+    image: urls_backend:v1.0
     environment:
       PORT: 3000
     build: ./backend
     ports:
       - "3000:3000"
-    # volumes:
-    #   - .:/usr/src/backend/
+  database:
+    image: urls_database:v1.0
+    environment:
+      POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "secret"
+    build: ./database
+    ports:
+      - "5432:5432"

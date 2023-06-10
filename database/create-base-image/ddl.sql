@@ -1,0 +1,10 @@
+CREATE DATABASE main_db;
+
+\c main_db;
+
+CREATE TABLE users (
+	id serial PRIMARY KEY,
+	login VARCHAR ( 50 ) UNIQUE NOT NULL,
+	password VARCHAR ( 50 ) NOT NULL,
+	created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
