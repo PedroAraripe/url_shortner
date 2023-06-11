@@ -7,7 +7,7 @@ vue no front-end como pwa (aplicação web progressiva), node no back-end e post
 ## Pré-requisitos
 Certifique-se de ter o seguinte instalado em sua máquina:
 
-Docker: Download do Docker (https://www.docker.com/get-started/)
+* [Docker](https://www.docker.com/get-started/)
 
 ## Instalação
 1. Clone o repositório:
@@ -25,14 +25,14 @@ cd url_shortner
 docker-compose build
 ```
 
-4. Executar imagem do docker criada no passo anteriormente, inicializando assim a aplicação
+4. Executar imagem do docker criada no passo anterior e inicializando assim a aplicação
 ```bash
 docker-compose up -d
 ```
 
 ## Informações Adicionais
-* Documentação do Docker (https://docs.docker.com/)
-* Docker Compose (https://docs.docker.com/compose/)
+* [Documentação do Docker](https://docs.docker.com/)
+* [Documentação Docker Compose](https://docs.docker.com/compose/)
 
 ## Solução de Problemas
 Se você encontrar algum problema durante a instalação ou execução da aplicação, tente o seguinte:
