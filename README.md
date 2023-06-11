@@ -32,7 +32,7 @@ docker-compose up -d
 
 ## Informações Adicionais
 * [Documentação do Docker](https://docs.docker.com/)
-* [Docker Compose](https://docs.docker.com/compose/)
+* [Documentação Docker Compose](https://docs.docker.com/compose/)
 
 ## Solução de Problemas
 Se você encontrar algum problema durante a instalação ou execução da aplicação, tente o seguinte:
