@@ -2,17 +2,19 @@ version: '3'
 
 services:
   frontend:
-    image: urls_frontend:v1.0
     build: ./frontend
     ports:
       - "8080:8080"
+    volumes:
+      - ./frontend:/usr/src/frontend
   backend:
-    image: urls_backend:v1.0
     environment:
       PORT: 3000
     build: ./backend
     ports:
       - "3000:3000"
+    volumes:
+      - ./backend:/usr/src/backend
   database:
     image: urls_database:v1.0
     environment:
@@ -21,3 +23,5 @@ services:
     build: ./database
     ports:
       - "5432:5432"
+    # depends_on:
+    #   - backend
