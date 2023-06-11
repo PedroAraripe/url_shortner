@@ -25,7 +25,7 @@ cd url_shortner
 docker-compose build
 ```
 
-4. Executar imagem do docker criada no passo anteriormente, inicializando assim a aplicação
+4. Executar imagem do docker criada no passo anterior e inicializando assim a aplicação
 ```bash
 docker-compose up -d
 ```
