@@ -7,7 +7,7 @@ vue no front-end como pwa (aplicação web progressiva), node no back-end e post
 ## Pré-requisitos
 Certifique-se de ter o seguinte instalado em sua máquina:
 
-[Docker](https://www.docker.com/get-started/)
+* [Docker](https://www.docker.com/get-started/)
 
 ## Instalação
 1. Clone o repositório:
