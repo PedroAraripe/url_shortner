@@ -6,8 +6,6 @@ services:
     build: ./frontend
     ports:
       - "8080:8080"
-  #   volumes:
-  #     - .:/usr/src/frontend/
   backend:
     image: urls_backend:v1.0
     environment:
