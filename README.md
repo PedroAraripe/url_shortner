@@ -1,15 +1,15 @@
-## Url Shortner
+# Url Shortner
 
-# Descrição
+## Descrição
 Esta aplicação é uma plataforma de encurtamento de url's. Ela utiliza o Docker para containerização,
 vue no front-end como pwa (aplicação web progressiva), node no back-end e postgre como banco de dados, permitindo fácil implantação e escalabilidade.
 
-# Pré-requisitos
+## Pré-requisitos
 Certifique-se de ter o seguinte instalado em sua máquina:
 
 Docker: Download do Docker (https://www.docker.com/get-started/)
 
-# Instalação
+## Instalação
 1. Clone o repositório:
 ```bash
 git clone https://github.com/PedroAraripe/url_shortner.git
@@ -30,11 +30,11 @@ docker-compose build
 docker-compose up -d
 ```
 
-# Informações Adicionais
+## Informações Adicionais
 * Documentação do Docker (https://docs.docker.com/)
 * Docker Compose (https://docs.docker.com/compose/)
 
-# Solução de Problemas
+## Solução de Problemas
 Se você encontrar algum problema durante a instalação ou execução da aplicação, tente o seguinte:
 
 1. Verifique se o Docker está instalado e em execução corretamente.
