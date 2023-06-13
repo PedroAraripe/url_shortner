@@ -1,10 +1,10 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from "typeorm"
 
-export class CreateUrlRegister1686610918631 implements MigrationInterface {
+export class CreateUrlShortnedParam1686610905490 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "url_register",
+                name: "url_shortned_param",
                 columns: [
                     {
                         name: "id",
@@ -12,11 +12,11 @@ export class CreateUrlRegister1686610918631 implements MigrationInterface {
                         isPrimary: true
                     },
                     {
-                        name: "shortned_id",
+                        name: "url_register_id",
                         type: "int",
                     },
                     {
-                        name: "url_basic",
+                        name: "shortned_param",
                         type: "varchar",
                         isUnique: true,
                     },
@@ -28,9 +28,9 @@ export class CreateUrlRegister1686610918631 implements MigrationInterface {
                 ],
                 foreignKeys: [
                     {
-                        name: "fk_url_shortned_param",
-                        columnNames: ["shortned_id"],
-                        referencedTableName: "url_shortned_param",
+                        name: "fk_url_register",
+                        columnNames: ["url_register_id"],
+                        referencedTableName: "url_register",
                         referencedColumnNames: ["id"]
                     }
                 ]
@@ -39,7 +39,7 @@ export class CreateUrlRegister1686610918631 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("url_register")
+        await queryRunner.dropTable("url_shortned_param")
     }
 
 }

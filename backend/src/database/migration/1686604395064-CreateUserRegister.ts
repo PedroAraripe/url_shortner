@@ -1,10 +1,9 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm"
-
-export class CreateUrlShortnedParam1686610905490 implements MigrationInterface {
+export class CreateUserRegister1686604395064 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "url_shortned_param",
+                name: "user_register",
                 columns: [
                     {
                         name: "id",
@@ -12,9 +11,13 @@ export class CreateUrlShortnedParam1686610905490 implements MigrationInterface {
                         isPrimary: true
                     },
                     {
-                        name: "shortned_param",
+                        name: "login",
                         type: "varchar",
                         isUnique: true,
+                    },
+                    {
+                        name: "password",
+                        type: "varchar",
                     },
                     {
                         name: "created_on",
@@ -27,7 +30,7 @@ export class CreateUrlShortnedParam1686610905490 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("url_shortned_param")
+        await queryRunner.dropTable("user_register")
     }
 
 }
