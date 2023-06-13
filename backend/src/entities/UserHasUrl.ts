@@ -38,7 +38,10 @@ export class UserHasUrl {
   @JoinColumn({name: "url_register_id"})
   url_register: UrlRegister;
 
-  // @ManyToOne(() => UrlShortnedParam, url => url.url_register_id)
+  
+  // @ManyToMany(() => UrlRegister)
+  // @JoinColumn({name: "url_register_id"})
+  // @ManyToMany(() => UrlShortnedParam, etc => etc.url_register_id)
   // @JoinColumn({name: "url_register_id"})
   // url_register: UrlShortnedParam;
 }
