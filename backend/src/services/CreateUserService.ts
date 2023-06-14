@@ -1,6 +1,6 @@
 import { AppDataSource } from "../data-source";
 import { UserRegister } from "../entities/UserRegister";
-import { UserRequest } from "../types";
+import { UserRequest } from "../types/common";
 
 export class CreateUserService {
   async execute ({login, password} : UserRequest) : Promise <UserRegister | Error>{

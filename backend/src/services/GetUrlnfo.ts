@@ -1,7 +1,7 @@
 import { AppDataSource } from "../data-source";
 import { UrlRegister } from "../entities/UrlRegister";
 import { UrlShortnedParam } from "../entities/UrlShortnedParam";
-import { UrlInfoRequest, UrlInfoResponse } from "../types";
+import { UrlInfoRequest, UrlInfoResponse } from "../types/common";
 
 export class GetUrlnfo {
   async execute ({shortned_param}: UrlInfoRequest) : Promise <UrlInfoResponse>{

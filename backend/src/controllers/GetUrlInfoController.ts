@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { GetUrlnfo } from "../services/GetUrlnfo";
-import { UrlInfoRequest } from "../types";
+import { UrlInfoRequest } from "../types/common";
 
 export class GetUrlInfoController {
   async handle(request: Request, response: Response) {

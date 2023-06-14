@@ -1,6 +1,6 @@
 import { AppDataSource } from "../data-source";
 import { UrlShortnedParam } from "../entities/UrlShortnedParam";
-import { UrlShortnedParamRequest } from "../types";
+import { UrlShortnedParamRequest } from "../types/common";
 
 export class CreateUrlShortnedParam {
   async execute ({url_register_id} : UrlShortnedParamRequest) : Promise <UrlShortnedParam>{

@@ -2,7 +2,7 @@ import { AppDataSource } from "../data-source";
 import { UrlRegister } from "../entities/UrlRegister";
 import { UrlShortnedParam } from "../entities/UrlShortnedParam";
 import { UserHasUrl } from "../entities/UserHasUrl";
-import { UserHasUrlResponse, UserLoggedHeader } from "../types";
+import { UserHasUrlResponse, UserLoggedHeader } from "../types/common";
 export class GetUserUrl {
   async execute ({user_id} : UserLoggedHeader) : Promise <UserHasUrlResponse[]>{
     const repo = AppDataSource.getRepository(UserHasUrl);

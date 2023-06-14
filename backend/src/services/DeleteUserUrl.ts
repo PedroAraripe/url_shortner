@@ -1,6 +1,6 @@
 import { AppDataSource } from "../data-source";
 import { UrlAcessLog } from "../entities/UrlAcessLog";
-import { UserHasUrlRequest } from "../types";
+import { UserHasUrlRequest } from "../types/common";
 
 export class DeleteUserUrl {
   async execute ({url_register_id, user_id} : UserHasUrlRequest) : Promise <void | Error>{

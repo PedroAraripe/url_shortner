@@ -2,10 +2,11 @@ import { Request, Response } from "express";
 import { CreateUrlRegister } from "../services/CreateUrlRegister";
 import { CreateUrlShortnedParam } from "../services/CreateUrlShortnedParam";
 import { CreateUserHasUrlService } from "../services/CreateUserHasUrl";
-import { CreateUrlControllerBody } from "../types";
+import { CreateUrlControllerBody } from "../types/common";
 export class CreateUrlController {
   async handle(request: Request, response: Response) {
-    const {url_basic, user_id} = request.body as CreateUrlControllerBody;
+    const {url_basic} = request.body as CreateUrlControllerBody;
+    const {user_id} = request;
 
     const serviceRegisterBase = new CreateUrlRegister();
     const resultUrlRegister = await serviceRegisterBase.execute({url_basic});

@@ -51,3 +51,9 @@ export type UrlInfoResponse = {
   shortned_param: string,
   created_on: Date
 };
+
+export type AuthenticatedUserResponse = {
+  id: number;
+  login: string;
+  token: string;
+}
