@@ -4,7 +4,7 @@ import {
   CreateDateColumn,
   PrimaryGeneratedColumn,
   JoinColumn,
-  ManyToMany
+  ManyToOne
 } from "typeorm";
 import { UrlRegister } from "./UrlRegister";
 import { UserRegister } from "./UserRegister";
@@ -23,11 +23,11 @@ export class UrlAcessLog {
   @CreateDateColumn()
   created_on: Date;
 
-  @ManyToMany(() => UrlRegister)
-  @JoinColumn({name: "url_register_id"})
-  url_register: UrlRegister;
-  
-  @ManyToMany(() => UserRegister)
+  @ManyToOne(() => UserRegister, user => user.id)
   @JoinColumn({name: "user_id"})
   user: UserRegister;
+
+  @ManyToOne(() => UrlRegister, url => url.id)
+  @JoinColumn({name: "url_register_id"})
+  url_register: UrlRegister;
 }
