@@ -1,11 +1,14 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import AuthView from "../views/AuthView.vue";
+import HomeView from "../views/HomeView.vue";
+import PageNotFoundView from "../views/PageNotFoundView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "home",
-    redirect: { path: "/login" },
+    component: HomeView,
+    // redirect: { path: "/login" },
   },
   {
     path: "/login",
@@ -17,15 +20,7 @@ const routes: Array<RouteRecordRaw> = [
     name: "register-user",
     component: AuthView,
   },
-  {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
-  },
+  { path: "/:catchAll(.*)", component: PageNotFoundView },
 ];
 
 const router = createRouter({

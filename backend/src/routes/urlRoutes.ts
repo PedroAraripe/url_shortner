@@ -7,9 +7,9 @@ import setAuthMiddleware from "../middlewares/setAuthMiddleware";
 const express = require('express');
 const router = express.Router();
 
-router.post("/url", setAuthMiddleware, new CreateUrlController().handle);
-router.post("/url/access", new CreateUrlAccessLogController().handle);
-router.get("/url/most-access", new GetMostAcessedUrlsController().handle);
-router.get("/url/:shortned_param", new GetUrlInfoController().handle);
+router.post("/", setAuthMiddleware, new CreateUrlController().handle);
+router.post("/access", new CreateUrlAccessLogController().handle);
+router.get("/most-access", new GetMostAcessedUrlsController().handle);
+router.get("/:shortned_param", new GetUrlInfoController().handle);
 
 export {router as urlRouter};

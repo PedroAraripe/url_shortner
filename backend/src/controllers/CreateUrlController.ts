@@ -22,8 +22,10 @@ export class CreateUrlController {
     }
     
     return response.json({
-      ...resultUrlRegister,
-      register_hash: resultHashRegister
+      url_register_id: resultHashRegister.url_register_id,
+      url_basic: resultUrlRegister.url_basic,
+      shortned_param: resultHashRegister.shortned_param,
+      created_on: resultUrlRegister.created_on,
     });
   }
 }

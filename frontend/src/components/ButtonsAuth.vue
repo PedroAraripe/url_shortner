@@ -1,13 +1,13 @@
 <template>
   <div class="d-flex flex-column justify-content-center pt-3">
-    <button role="button" type="submit" class="btn btn-success px-4 py-2">
+    <button type="submit" class="btn btn-success px-4 py-2">
       {{ mainItem.text }}
     </button>
     <div class="d-flex align-items-center justify-content-center pt-4">
       <router-link :to="secondaryItem.routeName" class="ml-3 text-dark">
         {{ secondaryItem.text }}
       </router-link>
-      <router-link to="/home" class="ml-3 text-dark">
+      <router-link to="/" class="ml-3 text-dark">
         Continuar sem sessão
       </router-link>
     </div>
@@ -46,3 +46,10 @@ watch(
   { immediate: true }
 );
 </script>
+<style lang="scss" scoped>
+.btn {
+  &:hover {
+    cursor: pointer;
+  }
+}
+</style>
