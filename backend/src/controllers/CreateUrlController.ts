@@ -20,8 +20,6 @@ export class CreateUrlController {
       await serviceUserHasUrl.execute({url_register_id, user_id});
     }
     
-    delete resultHashRegister.allowedCharsUrl;
-
     return response.json({
       ...resultUrlRegister,
       register_hash: resultHashRegister

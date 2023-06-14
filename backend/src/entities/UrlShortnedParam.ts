@@ -8,10 +8,9 @@ import {
   BeforeInsert
 } from "typeorm";
 import { UrlRegister } from "./UrlRegister";
-import { HelperHash } from "../helpers/hashHelper";
-
+import { allowedCharsUrl } from "../constants";
 @Entity("url_shortned_param")
-export class UrlShortnedParam extends HelperHash {
+export class UrlShortnedParam {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -27,6 +26,21 @@ export class UrlShortnedParam extends HelperHash {
   
   @CreateDateColumn()
   created_on: Date;
+
+  intToHash(valueInt : number) : string {
+    const hashedIntChars : string[] = [];
+    
+    let currentIntValue = valueInt - 1;
+    
+    while (currentIntValue > 0) {
+      const rest = currentIntValue % allowedCharsUrl.length;
+      currentIntValue = Math.floor(currentIntValue / allowedCharsUrl.length);
+
+      hashedIntChars.push(allowedCharsUrl[rest])
+    }
+
+    return hashedIntChars.reverse().join("");
+  }
 
   @BeforeInsert()
   setShortnedParam() {

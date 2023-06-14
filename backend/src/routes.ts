@@ -13,10 +13,9 @@ routes.post("/user", new CreateUserController().handle);
 routes.get("/user/url", new GetUserUrlController().handle);
 routes.delete("/user/url", new DeleteUserUrlController().handle);
 
-
 routes.post("/url", new CreateUrlController().handle);
-routes.get("/url/most-access", new GetMostAcessedUrlsController().handle);
 routes.post("/url/access", new CreateUrlAccessLogController().handle);
+routes.get("/url/most-access", new GetMostAcessedUrlsController().handle);
 routes.get("/url/:shortned_param", new GetUrlInfoController().handle);
 
 export {routes};
