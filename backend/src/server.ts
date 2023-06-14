@@ -1,7 +1,9 @@
 import "reflect-metadata";
 import "./database";
 import express from "express";
-import { routes } from "./routes";
+import { authRouter } from "./routes/authRoutes";
+import { userRouter } from "./routes/userRoutes";
+import { urlRouter } from "./routes/urlRoutes";
 
 const port = process.env.PORT || 3001;
 
@@ -9,6 +11,8 @@ const app = express();
 
 app.use(express.json());
 
-app.use(routes);
+app.use("/auth", authRouter);
+app.use("/user", userRouter);
+app.use("/url", urlRouter);
 
 app.listen(port, () => console.log(`App listening on port ${port}.`));
