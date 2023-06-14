@@ -1,13 +1,9 @@
 import { AppDataSource } from "../data-source";
 import { UrlAcessLog } from "../entities/UrlAcessLog";
-
-type UserUrlRequest = {
-  url_register_id: number;
-  user_id: number;
-};
+import { UserHasUrlRequest } from "../types";
 
 export class DeleteUserUrl {
-  async execute ({url_register_id, user_id} : UserUrlRequest) : Promise <void | Error>{
+  async execute ({url_register_id, user_id} : UserHasUrlRequest) : Promise <void | Error>{
     const repo = AppDataSource.getRepository(UrlAcessLog);
 
     if(!(await repo.findOne({where: {url_register_id, user_id}}))) {

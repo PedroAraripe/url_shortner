@@ -1,10 +1,6 @@
 import { AppDataSource } from "../data-source";
 import { UrlRegister } from "../entities/UrlRegister";
-
-type UrlRegisterRequest = {
-  url_basic: string;
-};
-
+import { UrlRegisterRequest } from "../types";
 export class CreateUrlRegister {
   async execute ({url_basic} : UrlRegisterRequest) : Promise <UrlRegister>{
     const repo = AppDataSource.getRepository(UrlRegister);

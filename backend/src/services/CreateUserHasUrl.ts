@@ -1,10 +1,6 @@
 import { AppDataSource } from "../data-source";
 import { UserHasUrl } from "../entities/UserHasUrl";
-
-type UserHasUrlRequest = {
-  url_register_id: number;
-  user_id: number;
-};
+import { UserHasUrlRequest } from "../types";
 
 export class CreateUserHasUrlService {
   async execute ({url_register_id, user_id} : UserHasUrlRequest) : Promise <UserHasUrl | Error>{

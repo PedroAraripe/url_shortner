@@ -2,15 +2,7 @@ import { AppDataSource } from "../data-source";
 import { UrlAcessLog } from "../entities/UrlAcessLog";
 import { UrlRegister } from "../entities/UrlRegister";
 import { UrlShortnedParam } from "../entities/UrlShortnedParam";
-
-type MostAcessedUrlsResponse = {
-  url_register_id: number;
-  url_basic: string;
-  accessed_times: number;
-  shortned_param: string;
-  created_on: Date;
-};
-
+import { MostAcessedUrlsResponse } from "../types";
 export class GetMostAcessedUrls {
   async execute () : Promise <MostAcessedUrlsResponse[]>{
     const repo = AppDataSource.getRepository(UrlRegister);
