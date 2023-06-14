@@ -1,4 +1,6 @@
 import { AppDataSource } from "../data-source";
+import { UrlRegister } from "../entities/UrlRegister";
+import { UrlShortnedParam } from "../entities/UrlShortnedParam";
 import { UserHasUrl } from "../entities/UserHasUrl";
 
 type UserHasUrlRequest = {
@@ -6,10 +8,11 @@ type UserHasUrlRequest = {
 };
 
 type UserHasUrlResponse = {
+  id: number;
+  user_id: number;
   url_basic: string;
   shortned_param: string;
-  id: number;
-  created_on: Date
+  created_on: Date,
 };
 
 export class GetUserUrl {
@@ -18,26 +21,25 @@ export class GetUserUrl {
     
     const urlRegistered : UserHasUrlResponse[] = await repo.createQueryBuilder("uhu")
       .leftJoinAndSelect(
-        'url_register',
+        UrlRegister,
         'ur',
         'ur.id = uhu.url_register_id',
       )
       .leftJoinAndSelect(
-        'url_shortned_param',
+        UrlShortnedParam,
         'usp',
         'usp.url_register_id = uhu.url_register_id',
         )
       .where("uhu.user_id = :id", { id: user_id })
       .select([
+        'ur.id AS id',
+        'uhu.user_id AS user_id',
         'ur.url_basic AS url_basic',
         'usp.shortned_param AS shortned_param',
-        'ur.id AS id',
         'ur.created_on AS created_on',
       ])
       .execute();
       
-      console.log(urlRegistered)
-
     return urlRegistered;
   }
 }
