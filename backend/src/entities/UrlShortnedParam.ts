@@ -32,7 +32,7 @@ export class UrlShortnedParam {
     
     let currentIntValue = valueInt - 1;
     
-    while (currentIntValue > 0) {
+    while (currentIntValue > 0 || !hashedIntChars.length) {
       const rest = currentIntValue % allowedCharsUrl.length;
       currentIntValue = Math.floor(currentIntValue / allowedCharsUrl.length);
 
