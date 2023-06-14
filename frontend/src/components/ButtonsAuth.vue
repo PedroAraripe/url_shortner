@@ -23,10 +23,10 @@ const props = defineProps({
 const texts = [
   {
     text: "Entrar",
-    routeName: "/",
+    routeName: "/login",
   },
   {
-    text: "Cadastrar nova conta",
+    text: "Cadastrar conta",
     routeName: "register-user",
   },
 ];
@@ -38,11 +38,9 @@ watch(
   () => props.isLogging,
   (isLogging) => {
     if (isLogging) {
-      mainItem = ref(texts[0]);
-      secondaryItem = ref(texts[1]);
+      [mainItem.value, secondaryItem.value] = texts;
     } else {
-      mainItem = ref(texts[1]);
-      secondaryItem = ref(texts[0]);
+      [secondaryItem.value, mainItem.value] = texts;
     }
   },
   { immediate: true }

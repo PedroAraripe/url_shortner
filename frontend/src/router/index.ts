@@ -4,6 +4,11 @@ import AuthView from "../views/AuthView.vue";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
+    name: "home",
+    redirect: { path: "/login" },
+  },
+  {
+    path: "/login",
     name: "login",
     component: AuthView,
   },
