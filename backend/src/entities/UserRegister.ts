@@ -14,8 +14,4 @@ export class UserRegister {
   
   @CreateDateColumn()
   created_on: Date;
-
-  // @OneToMany(() => UserHasUrl, userHasUrls => UserHasUrl)
-  // userHasUrls: UserHasUrl[];
-  
 }

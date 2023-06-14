@@ -27,9 +27,6 @@ export class UserHasUrl {
   @CreateDateColumn()
   created_on: Date;
 
-  // @ManyToMany(() => UrlRegister)
-  // @JoinTable()
-  // url_register: UrlRegister[]
   @ManyToOne(() => UserRegister, user => user.id)
   @JoinColumn({name: "user_id"})
   user: UserRegister;
@@ -37,11 +34,4 @@ export class UserHasUrl {
   @ManyToOne(() => UrlRegister, url => url.id)
   @JoinColumn({name: "url_register_id"})
   url_register: UrlRegister;
-
-  
-  // @ManyToMany(() => UrlRegister)
-  // @JoinColumn({name: "url_register_id"})
-  // @ManyToMany(() => UrlShortnedParam, etc => etc.url_register_id)
-  // @JoinColumn({name: "url_register_id"})
-  // url_register: UrlShortnedParam;
 }
