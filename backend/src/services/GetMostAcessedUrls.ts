@@ -20,8 +20,8 @@ export class GetMostAcessedUrls {
         UrlShortnedParam,
         'usp',
         'usp.url_register_id = ur.id',
-        )
-        .leftJoinAndSelect(
+      )
+      .leftJoinAndSelect(
           qb => qb
              .select([
               "count(p.url_register_id) accessed_times",
@@ -32,8 +32,8 @@ export class GetMostAcessedUrls {
           'ua',
           'ua.url_register_id = ur.id' // the answer
       )
-      .limit(100)
       .orderBy({"ua.accessed_times":"DESC"})
+      .limit(100)
       .select([
         'ur.id AS url_register_id',
         'ur.url_basic AS url_basic',
