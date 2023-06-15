@@ -63,3 +63,5 @@ export const allowedCharsUrl : string[] = [
   "y",
   "z"
 ];
+
+export const guestUserId = 1;
