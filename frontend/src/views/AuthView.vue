@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" class="my-4" />
-    <AuthForm>
+    <AuthForm :is-logging="isLogging">
       <ButtonsAuth :is-logging="isLogging" />
     </AuthForm>
   </div>
@@ -19,6 +19,5 @@ const name = computed(() => route.name);
 let isLogging: Ref<boolean> = ref(name.value == "login");
 watch(name, (name) => {
   isLogging.value = name == "login";
-  console.log("rota atual", name, isLogging.value);
 });
 </script>

@@ -7,6 +7,8 @@ export class DeleteUserUrlController {
     const {url_register_id} = request.body as UserHasUrlRequest;
     const {user_id} = request;
 
+    console.log('what', url_register_id, user_id)
+
     const service = new DeleteUserUrl();
     const result = await service.execute({url_register_id, user_id});
 
@@ -14,6 +16,6 @@ export class DeleteUserUrlController {
       return response.status(400).json(result.message);
     }
     
-    return response.status(300).json("Deletado com sucesso");
+    return response.status(200).json("Deletado com sucesso");
   }
 }

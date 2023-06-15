@@ -3,25 +3,31 @@ version: '3'
 services:
   # frontend:
   #   build: ./frontend
+    # container_name: frontend
   #   ports:
   #     - "8080:8080"
   #   volumes:
   #     - ./frontend:/usr/src/frontend
-  # backend:
-  #   environment:
-  #     PORT: 3000
-  #   build: ./backend
-  #   ports:
-  #     - "3000:3000"
-  #   volumes:
-  #     - ./backend:/usr/src/backend
+    # links:
+      # - backend
+  backend:
+    container_name: backend
+    environment:
+      PORT: 3000
+    build: ./backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/usr/src/backend
+    depends_on:
+      - database
+    links:
+      - database
   database:
-    image: urls_database:v1.0
+    container_name: database
     environment:
       POSTGRES_USER: "root"
       POSTGRES_PASSWORD: "secret"
     build: ./database
     ports:
       - "5432:5432"
-    # depends_on:
-    #   - backend

@@ -21,11 +21,22 @@ import RegisterUrl from "@/components/RegisterUrl";
 import UrlsTable from "@/components/UrlsTable";
 
 import { useStore } from "vuex";
-import { computed } from "vue";
+import { computed, watch } from "vue";
 
 const store = useStore();
 
 const urls = computed(() => store.state.urls);
+const auth = computed(() => store.state.auth);
+
+watch(
+  auth,
+  () => {
+    if (auth.value?.token) {
+      store.dispatch("FETCH_USER_URL");
+    }
+  },
+  { immediate: true }
+);
 </script>
 
 <style lang="scss" scoped></style>

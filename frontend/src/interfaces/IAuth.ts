@@ -1,4 +1,5 @@
 export default interface IAuth {
   id: string;
-  nome: string;
+  login: string;
+  token: string;
 }

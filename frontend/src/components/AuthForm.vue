@@ -17,14 +17,31 @@
 </template>
 
 <script lang="ts" setup>
-import { LoginUser } from "@/interfaces/auth.ts";
+import { defineProps } from "vue";
+import { IUser } from "@/interfaces/IUser";
 import { ref } from "vue";
 import type { Ref } from "vue";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 
-const form: Ref<LoginUser> = ref({});
+const router = useRouter();
+const props = defineProps({
+  isLogging: Boolean,
+});
+
+const store = useStore();
+
+const form: Ref<IUser> = ref({});
 
 const handleSubmit = (e) => {
   e.preventDefault();
+
+  const action = props.isLogging ? "LOGIN_USER" : "CREATE_USER";
+  store.dispatch(action, form.value).then((r) => {
+    if (props.isLogging && !(r instanceof Error)) {
+      router.push({ path: "/" });
+    }
+  });
 };
 </script>
 
