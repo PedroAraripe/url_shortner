@@ -4,6 +4,9 @@
 Esta aplicação é uma plataforma de encurtamento de url's. Ela utiliza o Docker para containerização,
 vue no front-end como pwa (aplicação web progressiva), node no back-end e postgre como banco de dados, permitindo fácil implantação e escalabilidade.
 
+## Vidyard vídeo:
+https://share.vidyard.com/watch/B25DQ9rw5Tnj8xEok2pbMS? 
+
 ## Pré-requisitos
 Certifique-se de ter o seguinte instalado em sua máquina:
 
