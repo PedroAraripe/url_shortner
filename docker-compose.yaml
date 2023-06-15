@@ -4,22 +4,22 @@ services:
   frontend:
     build: ./frontend
     container_name: frontend
+    environment:
+      API_HOST: "localhost"
+      API_PORT: 3000
     ports:
       - "8080:8080"
-    environment:
-      API_HOST: "backend"
-      API_PORT: 3000
     links:
       - backend
-    # depends_on:
-    #   - backend
+    depends_on:
+      - backend
     # expose:
       # - 8080
 
   backend:
     container_name: backend
     environment:
-      PORT: 3001
+      PORT: 3000
       POSTGRES_PORT: 5432
       POSTGRES_HOST: "database"
       POSTGRES_DB: "main_db"
@@ -32,7 +32,6 @@ services:
       - database
     depends_on:
       - database
-    # entrypoint: ["bash -c","curl -X POST 'localhost:3000/user'", "-H", '"Content-Type: application/json"', "-d", "'{\"login\": \"guest\", \"password\": 123}'"] 
   database:
     container_name: database
     environment:
