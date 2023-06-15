@@ -33,6 +33,12 @@ docker-compose build
 docker-compose up -d
 ```
 
+5. Acessar o front pelo http://localhost:8080
+
+## Observações:
+* Não foi implementado o seed de dados, mas o primeiro usuário fica como usuário "guest", sendo o usuário sem autenticação.
+* O projeto roda em docker, mas caso não possua em sua máquina, será necessário instalar o postgre, e dependenciais requeridas dentro do front / back.
+
 ## Informações Adicionais
 * [Documentação do Docker](https://docs.docker.com/)
 * [Documentação Docker Compose](https://docs.docker.com/compose/)
