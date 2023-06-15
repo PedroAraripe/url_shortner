@@ -1,14 +1,9 @@
 <template>
   <div class="row wrapper-item-list py-1">
-    <div
-      v-if="isTopCharts"
-      class="col-2 d-flex justify-content-start align-items-center"
-    >
+    <div class="col-1 d-flex justify-content-start align-items-center">
       {{ index + 1 }}
     </div>
-    <div
-      class="col-7 co-lg-8 d-flex justify-content-start d-flex align-items-center"
-    >
+    <div class="col-7 d-flex justify-content-start d-flex align-items-center">
       <div class="main-url-content ellipsis-item">
         {{ urlItem.url_basic }}
       </div>
@@ -24,17 +19,11 @@
       </router-link>
     </div>
 
-    <div
-      v-if="!isTopCharts"
-      class="col-2 col-lg-1 d-flex justify-content-end align-items-center"
-    >
+    <div class="col-1 d-flex justify-content-end align-items-center">
       <span class="text-danger p-2 delete-clickable" @click="handleDeleteUrl">
         <font-awesome-icon icon="fa-solid fa-trash" />
       </span>
     </div>
-    <!-- <div class="col-2">
-        <font-awesome-icon icon="fa-solid fa-trash" />
-    </div> -->
   </div>
 </template>
 
@@ -46,7 +35,7 @@ const store = useStore();
 
 const props = defineProps({
   urlItem: Object,
-  isTopCharts: Boolean,
+  isTopUrls: Boolean,
   index: Number,
 });
 

@@ -2,12 +2,19 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import AuthView from "../views/AuthView.vue";
 import HomeView from "../views/HomeView.vue";
 import PageNotFoundView from "../views/PageNotFoundView.vue";
+import MostAccessedsUrlsView from "../views/MostAccessedsUrlsView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "home",
     component: HomeView,
+    // redirect: { path: "/login" },
+  },
+  {
+    path: "/most-accessed",
+    name: "most-accessed",
+    component: MostAccessedsUrlsView,
     // redirect: { path: "/login" },
   },
   {
