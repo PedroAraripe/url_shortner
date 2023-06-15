@@ -2,6 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import AuthView from "../views/AuthView.vue";
 import HomeView from "../views/HomeView.vue";
 import PageNotFoundView from "../views/PageNotFoundView.vue";
+import AccessHashUrlView from "../views/AccessHashUrlView.vue";
 import MostAccessedsUrlsView from "../views/MostAccessedsUrlsView.vue";
 
 const routes: Array<RouteRecordRaw> = [
@@ -27,7 +28,8 @@ const routes: Array<RouteRecordRaw> = [
     name: "register-user",
     component: AuthView,
   },
-  { path: "/:catchAll(.*)", component: PageNotFoundView },
+  { path: "/not-found", component: PageNotFoundView, name: "not-found-page" },
+  { path: "/:catchAll(.*)", component: AccessHashUrlView },
 ];
 
 const router = createRouter({

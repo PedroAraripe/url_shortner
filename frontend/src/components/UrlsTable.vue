@@ -22,7 +22,7 @@
             </a>
           </td>
           <td>
-            <router-link :to="`/r/${url.shortned_param}`">
+            <router-link :to="`/${url.shortned_param}`">
               <span class="p-1">
                 {{ url.shortned_param }}
               </span>

@@ -8,6 +8,7 @@ import http from "@/http";
 interface Estado {
   auth: IAuth[];
   urls: IUrl[];
+  url_accessed: IUrl | null;
   urls_most_accesseds: IUrlMostAccesseds[];
 }
 
@@ -17,6 +18,7 @@ export const store = createStore<Estado>({
   state: {
     auth: [],
     urls: [],
+    url_accessed: null,
     urls_most_accesseds: [],
   },
   mutations: {
@@ -31,29 +33,11 @@ export const store = createStore<Estado>({
     ["DEFINE_TOP_URLS"](state, urlsMostAccesseds: IUrlMostAccesseds[]) {
       state.urls_most_accesseds = urlsMostAccesseds;
     },
-    // [EXCLUIR_PROJETO](state, id: string) {
-    //   state.projetos = state.projetos.filter((proj) => proj.id != id);
-    // },
-    // [DEFINE_PROJETOS](state, projetos: IProjeto[]) {
-    //   state.projetos = projetos;
-    // },
-    // [NOTIFICAR](state, novaNotificacao: INotificacao) {
-    //   novaNotificacao.id = new Date().getTime();
-    //   state.notificacoes.push(novaNotificacao);
-
-    //   setTimeout(() => {
-    //     state.notificacoes = state.notificacoes.filter(
-    //       (notificacao) => notificacao.id != novaNotificacao.id
-    //     );
-    //   }, 3000);
-    // },
+    ["SET_URL_ACCESSED"](state, url: IUrl) {
+      state.url_accessed = url;
+    },
   },
   actions: {
-    // [OBTER_PROJETOS]({ commit }) {
-    //   http
-    //     .get("projetos")
-    //     .then((response) => commit(DEFINE_PROJETOS, response.data));
-    // },
     async ["SAVE_URL"]({ commit, state }, url: string) {
       try {
         const isAlreadySaved = !!state.urls.find(
@@ -70,6 +54,23 @@ export const store = createStore<Estado>({
         alert("Falha ao salvar url");
       }
     },
+    async ["FETCH_URL_ACCESSED"]({ commit }, hashParam: string) {
+      try {
+        const { data: urlDB } = await http.get(`/url/${hashParam}`);
+        commit("SET_URL_ACCESSED", urlDB);
+      } catch (e) {
+        alert("Falha ao salvar url");
+      }
+    },
+    async ["SEND_ACCESS_LOG"](context, urlRegisterId: number) {
+      try {
+        await http.post(`/url/access`, {
+          url_register_id: urlRegisterId,
+        });
+      } catch (e) {
+        console.error("Erro ao salvar acesso de url");
+      }
+    },
     async ["GET_TOP_URLS"]({ commit, state }) {
       try {
         const { data: urls } = await http.get("/url/most-access");
@@ -80,28 +81,11 @@ export const store = createStore<Estado>({
     },
     async ["DELETE_URL"]({ commit, state }, url_register_id) {
       try {
-        // const isAlreadySaved = !!state.urls.find(
-        //   (urlSaved) => urlSaved.url_basic === url
-        // );
-        // if (isAlreadySaved) {
-        //   return;
-        // }
-        // const { data: urlCreated } = await http.post("/url", {
-        //   url_basic: url,
-        // });
         commit("REMOVE_URL", url_register_id);
       } catch (e) {
         alert("Falha ao remover url");
       }
     },
-    // [ALTERAR_PROJETO](contexto, projeto: IProjeto) {
-    //   return http.put(`/projetos/${projeto.id}`, projeto);
-    // },
-    // [REMOVER_PROJETO]({ commit }, id: string) {
-    //   return http
-    //     .delete(`/projetos/${id}`)
-    //     .then(() => commit(EXCLUIR_PROJETO, id));
-    // },
   },
 });
 
