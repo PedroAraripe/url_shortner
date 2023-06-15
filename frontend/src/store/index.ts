@@ -104,6 +104,7 @@ export const store = createStore<Estado>({
         commit("SET_USER", userLogged);
 
         toast.success("Logado com sucesso.");
+        return true;
       } catch (e) {
         toast.error("Credenciais inválidas.");
       }

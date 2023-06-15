@@ -38,7 +38,7 @@ const handleSubmit = (e) => {
 
   const action = props.isLogging ? "LOGIN_USER" : "CREATE_USER";
   store.dispatch(action, form.value).then((r) => {
-    if (props.isLogging && !(r instanceof Error)) {
+    if (props.isLogging && !(r instanceof Error) && r) {
       router.push({ path: "/" });
     }
   });
