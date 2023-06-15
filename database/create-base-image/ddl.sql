@@ -1,5 +1,5 @@
-CREATE DATABASE main_db;
-
-INSERT INTO user_register(login, password)
-VALUES
-  ('guest', '$2a$08$isXOCwiNlTOjAKD4HRnj2ugILLTAEoUQjqdl1RAPZJ5ZtpFnapH.u'),
+-- CREATE DATABASE main_db;
+-- INSERT INTO user_register(login, password)
+-- VALUES
+--   ()'guest', '$2a$08$isXOCwiNlTOjAKD4HRnj2ugILLTAEoUQjqdl1RAPZJ5ZtpFnapH.u'
+-- curl -X POST 'localhost:3000/user' -H "Content-Type: application/json" -d '{"login": guest, "password": 123}'

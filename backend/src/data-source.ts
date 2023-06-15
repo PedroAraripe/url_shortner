@@ -11,13 +11,14 @@ import { UrlRegister } from "./entities/UrlRegister"
 import { UrlAcessLog } from "./entities/UrlAcessLog"
 import { UserHasUrl } from "./entities/UserHasUrl"
 
+
 export const AppDataSource = new DataSource({
     type: "postgres",
-    host: "localhost",
-    port: 5432,
-    username: "root",
-    password: "secret",
-    database: "main_db",
+    host: process.env.POSTGRES_HOST || "localhost",
+    port: process.env.POSTGRES_PORT ? Number(process.env.POSTGRES_PORT) : 5432,
+    username: process.env.POSTGRES_USER || "root",
+    password: process.env.POSTGRES_PASSWORD || "secret",
+    database: process.env.POSTGRES_DB || "main_db",
     synchronize: true,
     logging: true,
     entities: [

@@ -6,9 +6,9 @@ WORKDIR /usr/src/backend
 
 COPY package*.json ./
 
-# If you are building your code for production
-# RUN npm ci --omit=dev
-RUN npm install
+ENV NODE_ENV=production
+RUN npm install --production
+
 RUN npm install --global typescript nodemon concurrently
 
 COPY . .
