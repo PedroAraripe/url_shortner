@@ -24,7 +24,6 @@ export class GetMostAcessedUrls {
           'ua',
           'ua.url_register_id = ur.id' // the answer
       )
-      .orderBy({"ua.accessed_times":"DESC"})
       .limit(100)
       .select([
         'ur.id AS url_register_id',
@@ -33,6 +32,7 @@ export class GetMostAcessedUrls {
         'usp.shortned_param AS shortned_param',
         'ur.created_on AS created_on',
       ])
+      .orderBy({"coalesce(ua.accessed_times, \'0\')":"DESC"})
       .execute();
       
     return urlRegistered;
