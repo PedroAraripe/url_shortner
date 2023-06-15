@@ -25,9 +25,6 @@ const form: Ref<LoginUser> = ref({});
 
 const handleSubmit = (e) => {
   e.preventDefault();
-
-  console.log("submeteu o form");
-  console.log(form.value);
 };
 </script>
 
@@ -47,8 +44,6 @@ const handleSubmit = (e) => {
     label {
       font-weight: bold;
     }
-
-    // button
   }
 }
 </style>
