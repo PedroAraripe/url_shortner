@@ -6,6 +6,10 @@ import IUrl from "@/interfaces/IUrl";
 import IUrlMostAccesseds from "@/interfaces/IUrlMostAccesseds";
 import IUser from "@/interfaces/IUser";
 import http from "@/http";
+
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
+
 interface Estado {
   auth: IAuth | null;
   urls: IUrl[];
@@ -57,8 +61,10 @@ export const store = createStore<Estado>({
           url_basic: url,
         });
         commit("ADD_URL", urlCreated);
+
+        toast.success("Url comprimida e salva com sucesso.");
       } catch (e) {
-        alert("Falha ao salvar url");
+        toast.error("Falha ao comprimir url.");
       }
     },
     async ["FETCH_URL_ACCESSED"]({ commit }, hashParam: string) {
@@ -66,23 +72,27 @@ export const store = createStore<Estado>({
         const { data: urlDB } = await http.get(`/url/${hashParam}`);
         commit("SET_URL_ACCESSED", urlDB);
       } catch (e) {
-        alert("Falha ao salvar url");
+        toast.error("Ocorreu um erro ao solicitar dados desta url.");
       }
+    },
+    ["SIGN_OUT"]({ commit }) {
+      commit("SET_USER", null);
     },
     async ["FETCH_USER_URL"]({ commit }) {
       try {
         const { data: urls } = await http.get(`/user/url/`);
         commit("SET_URLS", urls);
       } catch (e) {
-        alert("Falha ao solicitar urls");
+        toast.error("Falha ao solicitar urls");
       }
     },
     async ["CREATE_USER"]({ commit }, user: IUser) {
       try {
         const { data: userCreated } = await http.post(`/user`, user);
         console.log({ userCreated });
+        toast.success("Conta criada com sucesso.");
       } catch (e) {
-        alert("Falha ao criar usuário");
+        toast.error("Falha ao criar conta.");
       }
     },
     async ["LOGIN_USER"]({ commit }, user: IUser) {
@@ -92,8 +102,10 @@ export const store = createStore<Estado>({
           "Authorization"
         ] = `Bearer ${userLogged.token}`;
         commit("SET_USER", userLogged);
+
+        toast.success("Logado com sucesso.");
       } catch (e) {
-        return new Error("Credenciais inválidas");
+        toast.error("Credenciais inválidas.");
       }
     },
     async ["SEND_ACCESS_LOG"](context, urlRegisterId: number) {
@@ -102,7 +114,7 @@ export const store = createStore<Estado>({
           url_register_id: urlRegisterId,
         });
       } catch (e) {
-        console.error("Erro ao salvar acesso de url");
+        toast.success("Erro ao acessar url descomprimida");
       }
     },
     async ["GET_TOP_URLS"]({ commit, state }) {
@@ -110,7 +122,7 @@ export const store = createStore<Estado>({
         const { data: urls } = await http.get("/url/most-access");
         commit("DEFINE_TOP_URLS", urls);
       } catch (e) {
-        alert("Falha ao solicitar dados de urls mais acessadas");
+        toast.error("Falha ao solicitar dados de urls mais acessadas");
       }
     },
     async ["DELETE_URL"]({ commit, state }, url_register_id) {
@@ -121,9 +133,10 @@ export const store = createStore<Estado>({
           },
         });
         commit("REMOVE_URL", url_register_id);
+        toast.success("Sucesso ao deletar url");
       } catch (e) {
         console.log({ e });
-        alert("Falha ao remover url");
+        toast.error("Falha ao deletar url");
       }
     },
   },

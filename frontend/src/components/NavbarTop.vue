@@ -12,9 +12,22 @@
       </router-link>
     </div>
     <div class="nav-item font-weight-bold px-4">
-      <span v-if="auth?.login">
-        {{ auth.login }}
-      </span>
+      <div
+        class="d-flex align-items-center justify-content-center"
+        v-if="auth?.login"
+      >
+        <div class="mr-2 mr-lg-3">
+          {{ auth.login }}
+        </div>
+        <div @click="signOut">
+          <router-link to="/login">
+            <font-awesome-icon
+              class="text-danger"
+              icon="fa-solid fa-sign-out"
+            />
+          </router-link>
+        </div>
+      </div>
       <router-link to="/login" v-else> Login </router-link>
     </div>
   </div>
@@ -28,6 +41,8 @@ import { computed } from "vue";
 const store = useStore();
 
 const auth = computed(() => store.state.auth);
+
+const signOut = () => store.dispatch("SIGN_OUT");
 
 const itemsRoutes = ref([
   {
